@@ -6,10 +6,10 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/asuh/sage.git"
+    "url": "git://github.com/asuh/sage-indieweb.git"
   },
   "bugs": {
-    "url": "https://github.com/asuh/sage/issues"
+    "url": "https://github.com/asuh/sage-indieweb/issues"
   },
   "licenses": [
     {
