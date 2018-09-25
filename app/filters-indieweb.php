@@ -69,15 +69,6 @@ add_filter('get_avatar_data', function($args, $id_or_email) {
 }, 11, 2);
 
 /**
- * Adds custom classes to the array of comment classes.
- */
-add_filter('comment_class', function($classes) {
-	$classes[] = 'u-comment';
-	$classes[] = 'h-cite';
-	return array_unique( $classes );
-}, 11);
-
-/**
  * Wraps the_content in e-content
  */
 // add_filter('the_content', function($content) {
@@ -115,8 +106,8 @@ add_filter( 'tiny_mce_before_init', function( $init_array ) {
 
     $style_formats = array(
         array(
-            'title' => 'Lead Paragraph',
-            'block' => 'p',
+            'title'   => 'Lead Paragraph',
+            'block'   => 'p',
             'classes' => 'lead-paragraph',
             'wrapper' => false,
         ),
