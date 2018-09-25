@@ -106,7 +106,7 @@ function sage_entry_date() {
     $time_string = sprintf(
         $time_string,
         esc_attr( get_the_date( DATE_W3C ) ),
-        get_the_date()
+        get_the_date(),
         esc_attr( get_the_modified_date( DATE_W3C ) ),
         get_the_modified_date()
     );
