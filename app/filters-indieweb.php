@@ -7,7 +7,7 @@ namespace App;
  */
 add_filter('body_class', function (array $classes) {
     /** Add class if sidebar is inactive */
-    if ( !is_active_sidebar( 'sidebar-primary' ) ) {
+    if ( !is_active_sidebar( 'sidebar' ) ) {
         $classes[] = 'no-sidebar';
     }
 
