@@ -6,31 +6,29 @@ namespace App;
  * Add <body> classes, extending body_class filter from /app/filters.php
  */
 add_filter('body_class', function (array $classes) {
-    /** Add class if sidebar is inactive */
-    if ( !is_active_sidebar( 'sidebar' ) ) {
-        $classes[] = 'no-sidebar';
-    }
-
-    /** Add class to sites with a custom background image */
+    // Add class to sites with a custom background image
     if ( get_background_image() ) {
         $classes[] = 'custom-background-image';
     }
 
-    /** Add class to sites with more than 1 published author */
+    // Add class to sites with more than 1 published author
     if ( is_multi_author() ) {
         $classes[] = 'group-blog';
     }
 
-    /** Add class to non-singular pages */
+    // Add class if sidebar is inactive
+    if ( !is_active_sidebar( 'sidebar' ) ) {
+        $classes[] = 'no-sidebar';
+    }
+
+    // Add class to non-singular pages
     if ( !is_singular() ) {
-        $classes[] = 'hfeed';
         $classes[] = 'h-feed';
     } elseif ( 'page' !== get_post_type() ) {
-        $classes[] = 'hentry';
         $classes[] = 'h-entry';
     }
 
-    return array_filter($classes);
+    return $classes;
 });
 
 /**
@@ -43,17 +41,15 @@ add_filter('post_class', function($classes) {
 	$classes = array_diff( $classes, array( 'hentry' ) );
 	if ( ! is_singular() ) {
 		if ( 'page' !== get_post_type() ) {
-			// Adds a class for microformats v2
+			// Adds a class for microformats2
 			$classes[] = 'h-entry';
-			// add hentry to the same tag as h-entry
-			$classes[] = 'hentry';
 		}
 	}
 	return $classes;
 });
 
 /**
- * Adds mf2 to avatar
+ * Adds microformats2 to avatar photo
  *
  * @param array $args Arguments passed to get_avatar_data(), after processing.
  * @param int|string|object $id_or_email A user ID, email address, or comment object
