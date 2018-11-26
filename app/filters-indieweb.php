@@ -56,12 +56,13 @@ add_filter('post_class', function($classes) {
  * @return array $args
  */
 add_filter('get_avatar_data', function($args, $id_or_email) {
-	if ( ! isset( $args['class'] ) ) {
-		$args['class'] = array( 'u-photo' );
-	} else {
-		$args['class'][] = 'u-photo';
-	}
-	return $args;
+    if ( ! isset( $args['class'] ) ) {
+        $args['class'] = array();
+    }
+    if ( ! in_array( 'u-featured', $args['class'] ) ) {
+        $args['class'][] = 'u-photo';
+    }
+    return $args;
 }, 11, 2);
 
 /**
