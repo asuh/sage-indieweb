@@ -50,7 +50,7 @@
   @endif
 @endif
 
-@if ( function_exists( 'get_simple_location' ) && is_singular() )
+@if ( class_exists( 'WP_Geo_Data' ) )
     {{ Loc_View::get_location() }}
 @endif
 
