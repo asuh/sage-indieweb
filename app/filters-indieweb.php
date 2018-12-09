@@ -32,6 +32,24 @@ add_filter('body_class', function (array $classes) {
 });
 
 /**
+ * Add a pingback url auto-discovery header for singularly identifiable articles
+ */
+add_action( 'wp_head', function() {
+    if ( is_singular() && pings_open() ) {
+        printf( '<link rel="pingback" href="%1$s">', esc_url( get_bloginfo( 'pingback_url' ) ) );
+    }
+});
+
+/**
+ * Add a rel-feed if the main page is not a list of posts
+ */
+add_action( 'wp_head', function() {
+    if ( is_front_page() && 0 !== (int) get_option( 'page_for_posts', 0 ) ) {
+        printf( '<link rel="feed" type="text/html" href="%1$s" title="%2$s">' . PHP_EOL, esc_url( get_post_type_archive_link( 'post' ) ), __( 'All Posts Feed', 'sage' ) );
+    }
+});
+
+/**
  * Adds custom classes to the array of post classes.
  *
  * @param array $classes Classes for the body element.
