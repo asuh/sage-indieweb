@@ -41,6 +41,11 @@ add_action( 'wp_head', function() {
 });
 
 /**
+ * Add default posts and comments RSS feed links to head
+ */
+add_theme_support( 'automatic-feed-links' );
+
+/**
  * Add a rel-feed if the main page is not a list of posts
  */
 add_action( 'wp_head', function() {
@@ -48,6 +53,7 @@ add_action( 'wp_head', function() {
         printf( '<link rel="feed" type="text/html" href="%1$s" title="%2$s">' . PHP_EOL, esc_url( get_post_type_archive_link( 'post' ) ), __( 'All Posts Feed', 'sage' ) );
     }
 });
+
 
 /**
  * Adds custom classes to the array of post classes.
