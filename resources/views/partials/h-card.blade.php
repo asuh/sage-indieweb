@@ -4,7 +4,7 @@
   @else
   {!! get_avatar( get_the_author_meta( 'ID' ), apply_filters( 'sage_author_avatar_size', 49 ) ) !!}
   @endif
-  <span class="screen-reader-text">{{ _x( 'Author', 'Used before post author name.', 'asuh' ) }} </span>
+  <span class="screen-reader-text">{{ _x( 'Author', 'Used before post author name.', 'sage' ) }} </span>
   @if ( class_exists( 'IndieWeb_Plugin' ) && is_multi_author())
   <a class="url fn n u-url" href="{{ esc_url( get_author_posts_url( get_option( 'iw_default_author' ) ) ) }}">{{ get_the_author() }}</a>
   @elseif (is_multi_author())
