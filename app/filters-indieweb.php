@@ -93,23 +93,29 @@ add_filter('get_avatar_data', function($args, $id_or_email) {
  * Wraps the_content in e-content
  */
 add_filter('the_content', function($content) {
-	$wrap = '<div class="e-content">';
-	if ( empty( $content ) ) {
-		return $content;
-	}
-	return $wrap . $content . '</div>';
+    if ( is_feed() ) {
+        return $content;
+    }
+    $wrap = '<div class="entry-content e-content">';
+    if ( empty( $content ) ) {
+        return $content;
+    }
+    return $wrap . $content . '</div>';
 }, 1 );
 
 /**
  * Wraps the_excerpt in p-summary
  */
 add_filter('the_excerpt', function($content) {
-	$wrap = '<div class="p-summary">';
-	if ($content!="") {
-		return $wrap . $content . '</div>';
-	}
-	return $content;
-}, 1);
+    if ( is_feed() ) {
+        return $content;
+    }
+    $wrap = '<div class="entry-summary p-summary">';
+    if ( ! empty( $content ) ) {
+        return $wrap . $content . '</div>';
+    }
+    return $content;
+}, 1 );
 
 /**
  * Add Formats dropdown to WordPress visual editor

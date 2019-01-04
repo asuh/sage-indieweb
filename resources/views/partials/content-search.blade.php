@@ -7,5 +7,5 @@
   </header>
   <div class="main-content">
     @php the_excerpt() @endphp
-  </div>
+  </div><!-- .main-content -->
 </article>
