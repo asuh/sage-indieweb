@@ -51,7 +51,7 @@
 @endif
 
 @if ( class_exists( 'WP_Geo_Data' ) )
-    {{ Loc_View::get_location() }}
+    {!! Loc_View::get_location() !!}
 @endif
 
 {{-- Original Roots entry-meta code
