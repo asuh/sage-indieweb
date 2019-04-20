@@ -41,6 +41,16 @@ add_action( 'wp_head', function() {
 });
 
 /**
+ * For single author sites, add a rel="author" link element
+ */
+ add_action( 'wp_head', function() {
+    global $post;
+    $first_name = get_the_author_meta( 'user_firstname', $post->post_author );
+    $last_name = get_the_author_meta( 'user_lastname', $post->post_author );
+    printf( '<link rel="author" content="%1$s %2$s">', $first_name, $last_name );
+});
+
+/**
  * Add default posts and comments RSS feed links to head
  */
 add_theme_support( 'automatic-feed-links' );
